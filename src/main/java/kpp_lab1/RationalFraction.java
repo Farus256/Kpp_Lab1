@@ -9,6 +9,10 @@ public class RationalFraction {
         int gcd = gcd(numerator, denominator);
         this.numerator = numerator / gcd;
         this.denominator = denominator / gcd;
+        if (this.denominator < 0) {
+            this.numerator = -this.numerator;
+            this.denominator = -this.denominator;
+        }
     }
 
     public int getNumerator() {
@@ -21,6 +25,11 @@ public class RationalFraction {
 
     public RationalFraction add(RationalFraction other) {
         int newNumerator = this.numerator * other.denominator + other.numerator * this.denominator;
+        int newDenominator = this.denominator * other.denominator;
+        return new RationalFraction(newNumerator, newDenominator);
+    }
+    public RationalFraction subtract(RationalFraction other) {
+        int newNumerator = this.numerator * other.denominator - other.numerator * this.denominator;
         int newDenominator = this.denominator * other.denominator;
         return new RationalFraction(newNumerator, newDenominator);
     }
