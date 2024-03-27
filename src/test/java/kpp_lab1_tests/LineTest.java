@@ -11,6 +11,6 @@ public class LineTest {
         RationalFraction slope = new RationalFraction(1, 2);
         RationalFraction intercept = new RationalFraction(3, 4);
         Line line = new Line(slope, intercept);
-        // TODO: Add assertions to test the behavior of the Line class
+
     }
 }
