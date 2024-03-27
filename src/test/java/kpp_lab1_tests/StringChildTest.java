@@ -8,8 +8,6 @@ public class StringChildTest {
     public void testStringChild() {
         assertEquals("ry", StringChild.longestCommonChild("harry", "robby"));
         assertEquals("error", StringChild.longestCommonChild("xx", "zz"));
-
-
         assertEquals("abcdef", StringChild.longestCommonChild("abcdef", "abcdef"));
     }
 }

@@ -1,47 +1,45 @@
 package kpp_lab1;
+import java.util.Arrays;
 
 public class RationalFraction {
-    private int m;
-    private int n;
+    private int numerator;
+    private int denominator;
 
-    public RationalFraction(int m, int n) {
-        this.m = m;
-        this.n = n;
+    public RationalFraction(int numerator, int denominator) {
+        int gcd = gcd(numerator, denominator);
+        this.numerator = numerator / gcd;
+        this.denominator = denominator / gcd;
     }
 
-    public int getM() {
-        return m;
+    public int getNumerator() {
+        return numerator;
     }
 
-    public void setM(int m) {
-        this.m = m;
+    public int getDenominator() {
+        return denominator;
     }
 
-    public int getN() {
-        return n;
-    }
-
-    public void setN(int n) {
-        this.n = n;
-    }
-
-    @Override
-    public String toString() {
-        return m + "/" + n;
-    }
-
-    public void reduce() {
-        int gcd = gcd(m, n);
-        m /= gcd;
-        n /= gcd;
+    public RationalFraction add(RationalFraction other) {
+        int newNumerator = this.numerator * other.denominator + other.numerator * this.denominator;
+        int newDenominator = this.denominator * other.denominator;
+        return new RationalFraction(newNumerator, newDenominator);
     }
 
     private int gcd(int a, int b) {
         if (b == 0) {
             return a;
-        } else {
-            return gcd(b, a % b);
+        }
+        return gcd(b, a % b);
+    }
+
+    @Override
+    public String toString() {
+        return numerator + "/" + denominator;
+    }
+
+    public static void modifyEvenIndexedElements(RationalFraction[] fractions) {
+        for (int i = 0; i < fractions.length - 1; i += 2) {
+            fractions[i] = fractions[i].add(fractions[i + 1]);
         }
     }
 }
-

@@ -3,22 +3,20 @@ package kpp_lab1_tests;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import kpp_lab1.RationalFraction;
-import kpp_lab1.Line;
+
 public class RationalFractionTest {
     @Test
-    public void testRationalFraction() {
-        RationalFraction fraction = new RationalFraction(1, 2);
-        // Проверяем, что дробь была создана
-        assertNotNull(fraction);
-        // Проверяем, что числитель и знаменатель установлены правильно
-        assertEquals(1, fraction.getM());
-        assertEquals(2, fraction.getN());
-        // Проверяем, что дробь корректно преобразуется в строку
-        assertEquals("1/2", fraction.toString());
-        // Проверяем, что дробь корректно сокращается
-        fraction = new RationalFraction(2, 4);
-        fraction.reduce();
-        assertEquals(1, fraction.getM());
-        assertEquals(2, fraction.getN());
+    public void testModifyEvenIndexedElements() {
+        RationalFraction[] fractions = {new RationalFraction(1, 2),
+                new RationalFraction(3, 4), new RationalFraction(5, 6),
+                new RationalFraction(7, 8), new RationalFraction(9, 10)};
+        RationalFraction.modifyEvenIndexedElements(fractions);
+        assertEquals("5/4", fractions[0].toString());
+        assertEquals("3/4", fractions[1].toString());
+        assertEquals("41/24", fractions[2].toString());
+        assertEquals("7/8", fractions[3].toString());
+        assertEquals("9/10", fractions[4].toString());
     }
 }
+
+

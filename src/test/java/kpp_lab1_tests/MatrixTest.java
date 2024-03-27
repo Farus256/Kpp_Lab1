@@ -3,7 +3,6 @@ package kpp_lab1_tests;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import kpp_lab1.Matrix;
-
 public class MatrixTest {
     @Test
     public void testMatrix() {
